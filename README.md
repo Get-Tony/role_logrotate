@@ -28,6 +28,18 @@ Example Playbook
       hosts: managed
       roles:
          - logrotate
+      vars:
+        logrotate_conf_dir: /etc/logrotate.d
+        logrotate_scripts:
+          - name: nginx
+            path: /var/log/nginx/*.log
+            options:
+              - daily
+              - missingok
+              - rotate 7
+              - compress
+              - delaycompress
+              - notifempty
 
 License
 -------
